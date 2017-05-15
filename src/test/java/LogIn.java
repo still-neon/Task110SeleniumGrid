@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class LogIn {
 
     private WebDriver driver;
-    private String TITLE = "Mail.Ru: почта, поиск в интернете, новости, игры";
+    private String TITLE = "Mail.Ru: почта, поиск в интернете, новости, игры1";
 
     @BeforeMethod
     public void setUp() throws MalformedURLException {
