@@ -18,6 +18,11 @@ public class LoginTest {
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
     }
 
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Test
     public void login() throws Exception{
 
