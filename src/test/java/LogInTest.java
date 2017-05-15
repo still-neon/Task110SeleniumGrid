@@ -7,7 +7,7 @@ import java.net.URL;
 
 import static org.testng.Assert.assertEquals;
 
-public class LogIn {
+public class LogInTest {
 
     private WebDriver driver;
     private String TITLE = "Mail.Ru: почта, поиск в интернете, новости, игры1";
