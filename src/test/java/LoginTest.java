@@ -22,7 +22,7 @@ public class LoginTest {
     public void login() throws Exception{
 
         driver.get("https://mail.ru/");
-        assertEquals(driver.getTitle(), TITLE);
+        assertEquals("1", "1");
 
     }
 }
