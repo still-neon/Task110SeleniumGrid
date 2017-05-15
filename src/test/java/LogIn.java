@@ -1,40 +1,25 @@
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
-import java.io.File;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LogIn {
 
     private WebDriver driver;
 
     @BeforeMethod
-    public void setUp() {
-        driver = new FirefoxDriver();
+    public void setUp() throws MalformedURLException {
+        DesiredCapabilities capability = DesiredCapabilities.firefox();
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
     }
 
     @Test
     public void login() throws Exception{
 
-        driver.get("https://192.168.100.26/");
+        driver.get("https://mail.ru/");
 
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-
-        FileUtils.copyFile(scrFile, new File("D:\\screenshot.png"));
-
-        WebElement username = driver.findElement(By.xpath(".//*[@id='Username']"));
-        WebElement password = driver.findElement(By.xpath(".//*[@id='Password']"));
-        WebElement button = driver.findElement(By.xpath(".//*[@id='SubmitButton']"));
-
-        username.sendKeys("EugenBorisik");
-        password.sendKeys("qwerty12345");
-        button.submit();
-
-        driver.manage().timeouts().implicitlyWait(10, SECONDS);
-        WebElement linkText = driver.findElement(By.xpath("//ins[text()='Sign Out']"));
-
-        Assert.assertEquals("Sign Out",linkText.getText());
+        //System.out.println(driver.getTitle());
     }
 }
